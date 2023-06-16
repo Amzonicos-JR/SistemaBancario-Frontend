@@ -6,6 +6,14 @@ import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 
+/* ADMINAM [ROUTES] */
+
+//USERS
+import { UserPage } from './pages/Users/UserPage';
+import { AddUser } from './pages/Users/AddUser';
+import { GetUser } from './pages/Users/GetUser';
+import { UpdateUser } from './pages/Users/UpdateUser';
+
 export const AuthContext = createContext();
 export const Index = () => {
     const [role, setRole] = useState('')
@@ -30,9 +38,26 @@ export const Index = () => {
             setId(id)
         }
     }, [])
-/*
-    const ADMINAMRoutes = [
 
+    const ADMINAMRoutes = [
+        {
+            path: 'users',
+            element: <UserPage></UserPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetUser></GetUser>
+                },
+                {
+                    path: 'adduser',
+                    element: <AddUser></AddUser>
+                },
+                {
+                    path: 'updateuser/:_id',
+                    element: <UpdateUser></UpdateUser>
+                }
+            ]
+        }
     ]
 
     const ADMINRoutes = [
@@ -41,7 +66,7 @@ export const Index = () => {
     const CLIENTRoutes = [
 
     ]
-*/
+
     const routes = createBrowserRouter([
         {
             path: '/',
@@ -58,9 +83,9 @@ export const Index = () => {
                 },
                 {
                     path: '/home',
-                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>
-                    // children: role === "ADMINAM" ? ADMINAMRoutes :
-                    //     role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
+                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
+                     children: role === "ADMINAM" ? ADMINAMRoutes :
+                         role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
                 }
             ]
         }
