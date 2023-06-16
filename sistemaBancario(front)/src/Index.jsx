@@ -38,6 +38,34 @@ export const Index = () => {
     }, [])
 
     const ADMINAMRoutes = [
+        // {
+        //     path: 'product',
+        //     element: <ProductPage></ProductPage>,
+        //     children: [
+        //         {
+        //             path: '',
+        //             element: <GetProducts></GetProducts>
+        //         },
+        //         {
+        //             path: 'add',
+        //             element: <AddProduct></AddProduct>
+        //         },
+        //         {
+        //             path: 'update',
+        //             element: <UpdateProduct></UpdateProduct>
+        //         },
+        //         {
+        //             path: 'delete',
+        //             element: <DeleteProduct></DeleteProduct>
+        //         }
+        //     ]
+        // }
+    ]
+
+    const ADMINRoutes = [
+    ]
+
+    const CLIENTRoutes = [
         {
             path: 'product',
             element: <ProductPage></ProductPage>,
@@ -61,14 +89,7 @@ export const Index = () => {
             ]
         }
     ]
-/*
-    const ADMINRoutes = [
-    ]
 
-    const CLIENTRoutes = [
-
-    ]
-*/
     const routes = createBrowserRouter([
         {
             path: '/',
@@ -77,18 +98,19 @@ export const Index = () => {
             children: [
                 {
                     path: '/',
-                    element: <HomePage />
+                    element: <LoginPage />
                 },
                 {
-                    path: '/login',
-                    element: <LoginPage></LoginPage>
-                },
-                {
-                    path: '/home',
-                    element:/*  loggedIn ? */ <DashboardPage></DashboardPage>, /* : <LoginPage></LoginPage> */
-                    children: /* role === "ADMINAM" ? */ ADMINAMRoutes /* : */
-                    //     role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
+                    path: '/dash',
+                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
+                    children: role === "ADMINAM" ? ADMINAMRoutes : CLIENTRoutes
                 }
+                // {
+                //     path: '/home',
+                //     element:/*  loggedIn ? */ <DashboardPage></DashboardPage>, /* : <LoginPage></LoginPage> */
+                //     children: /* role === "ADMINAM" ? */ ADMINAMRoutes /* : */
+                //     //     role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
+                // }
             ]
         }
     ])
