@@ -5,6 +5,12 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
+//  ---------------Products
+import { ProductPage } from './pages/product/ProductPage';
+import { GetProducts } from "./pages/product/GetProducts";
+import { UpdateProduct } from "./pages/product/UpdateProduct";
+import { DeleteProduct } from "./pages/product/DeleteProduct";
+import { AddProduct } from "./pages/product/AddProduct";
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -30,11 +36,32 @@ export const Index = () => {
             setId(id)
         }
     }, [])
-/*
+
     const ADMINAMRoutes = [
-
+        {
+            path: 'product',
+            element: <ProductPage></ProductPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProducts></GetProducts>
+                },
+                {
+                    path: 'add',
+                    element: <AddProduct></AddProduct>
+                },
+                {
+                    path: 'update',
+                    element: <UpdateProduct></UpdateProduct>
+                },
+                {
+                    path: 'delete',
+                    element: <DeleteProduct></DeleteProduct>
+                }
+            ]
+        }
     ]
-
+/*
     const ADMINRoutes = [
     ]
 
@@ -58,8 +85,8 @@ export const Index = () => {
                 },
                 {
                     path: '/home',
-                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>
-                    // children: role === "ADMINAM" ? ADMINAMRoutes :
+                    element:/*  loggedIn ? */ <DashboardPage></DashboardPage>, /* : <LoginPage></LoginPage> */
+                    children: /* role === "ADMINAM" ? */ ADMINAMRoutes /* : */
                     //     role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
                 }
             ]
