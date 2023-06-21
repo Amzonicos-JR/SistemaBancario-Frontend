@@ -18,6 +18,20 @@ export const GetProducts = () => {
     }
   };
 
+  const deleteProduct = async(id) =>{
+    try{
+      let confirmDelete = confirm(`Are you sure to delete this product ${id}?`)
+      if(confirmDelete){
+        const {data} = await axios.delete(`http://localhost:3000/product/delete/${id}`)
+        getProducts()
+        alert(data.message)
+      }
+    }catch(err){
+      console.error(err)
+      throw new Error("Error to deleted product")
+    }
+  }
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -47,10 +61,10 @@ export const GetProducts = () => {
                     <h5 className="card-title">Total: {total}</h5>
                   </div>
                   <div className="card-body">
-                    <Link to={`update`}>
+                    <Link to={`update/${_id}`}>
                       <button className="btn btn-warning">Actualizar</button>
                     </Link>
-                    <Link to={`delete`}>
+                    <Link onClick={() => deleteProduct(_id)}>
                       <button className="btn btn-danger">Eliminar</button>
                     </Link>
                   </div>

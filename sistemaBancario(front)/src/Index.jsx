@@ -9,7 +9,6 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { ProductPage } from './pages/product/ProductPage';
 import { GetProducts } from "./pages/product/GetProducts";
 import { UpdateProduct } from "./pages/product/UpdateProduct";
-import { DeleteProduct } from "./pages/product/DeleteProduct";
 import { AddProduct } from "./pages/product/AddProduct";
 
 export const AuthContext = createContext();
@@ -51,12 +50,8 @@ export const Index = () => {
                     element: <AddProduct></AddProduct>
                 },
                 {
-                    path: 'update',
+                    path: 'update/:id',
                     element: <UpdateProduct></UpdateProduct>
-                },
-                {
-                    path: 'delete',
-                    element: <DeleteProduct></DeleteProduct>
                 }
             ]
         }
