@@ -11,6 +11,7 @@ import { GetProducts } from "./pages/product/GetProducts";
 import { UpdateProduct } from "./pages/product/UpdateProduct";
 import { DeleteProduct } from "./pages/product/DeleteProduct";
 import { AddProduct } from "./pages/product/AddProduct";
+import ServiceClient from './pages/ServicesBank/ServiceClient';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -37,7 +38,7 @@ export const Index = () => {
         }
     }, [])
 
-    const ADMINAMRoutes = [
+    const ADMINAMRoutes = [        
         // {
         //     path: 'product',
         //     element: <ProductPage></ProductPage>,
@@ -62,7 +63,7 @@ export const Index = () => {
         // }
     ]
 
-    const ADMINRoutes = [
+    const ADMINRoutes = [        
     ]
 
     const CLIENTRoutes = [
@@ -87,7 +88,11 @@ export const Index = () => {
                     element: <DeleteProduct></DeleteProduct>
                 }
             ]
-        }
+        },
+        {
+            path: 'servicesClient',
+            element: <ServiceClient></ServiceClient>
+        }        
     ]
 
     const routes = createBrowserRouter([
