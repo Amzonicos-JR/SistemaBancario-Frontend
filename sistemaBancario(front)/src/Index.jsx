@@ -5,12 +5,21 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
-//  ---------------Products
-import { ProductPage } from './pages/product/ProductPage';
-import { GetProducts } from "./pages/product/GetProducts";
-import { UpdateProduct } from "./pages/product/UpdateProduct";
-import { DeleteProduct } from "./pages/product/DeleteProduct";
-import { AddProduct } from "./pages/product/AddProduct";
+
+/* ADMINAM */
+//  --------------- USERS ---------------
+    import { UserPage } from './pages/Users/UserPage';
+    import { AddUser } from './pages/Users/AddUser';
+    import { GetUser } from './pages/Users/GetUser';
+    import { UpdateUser } from './pages/Users/UpdateUser';
+
+/* CLIENT */
+//  -------------- Products ---------------
+    import { ProductPage } from './pages/product/ProductPage';
+    import { GetProducts } from "./pages/product/GetProducts";
+    import { UpdateProduct } from "./pages/product/UpdateProduct";
+    import { DeleteProduct } from "./pages/product/DeleteProduct";
+    import { AddProduct } from "./pages/product/AddProduct";
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -38,28 +47,24 @@ export const Index = () => {
     }, [])
 
     const ADMINAMRoutes = [
-        // {
-        //     path: 'product',
-        //     element: <ProductPage></ProductPage>,
-        //     children: [
-        //         {
-        //             path: '',
-        //             element: <GetProducts></GetProducts>
-        //         },
-        //         {
-        //             path: 'add',
-        //             element: <AddProduct></AddProduct>
-        //         },
-        //         {
-        //             path: 'update',
-        //             element: <UpdateProduct></UpdateProduct>
-        //         },
-        //         {
-        //             path: 'delete',
-        //             element: <DeleteProduct></DeleteProduct>
-        //         }
-        //     ]
-        // }
+        {
+            path: 'user',
+            element: <UserPage></UserPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetUser></GetUser>
+                },
+                {
+                    path: 'adduser',
+                    element: <AddUser></AddUser>
+                },
+                {
+                    path: 'updateuser/:_id',
+                    element: <UpdateUser></UpdateUser>
+                }
+            ]
+        }
     ]
 
     const ADMINRoutes = [

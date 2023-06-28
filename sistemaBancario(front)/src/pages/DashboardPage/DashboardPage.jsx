@@ -20,7 +20,11 @@ export const DashboardPage = () => {
       <>
         {x === "ADMINAM" ? (
           <>
-
+            <li className="nav-item">
+              <Link to={"user"} className="nav-link">
+                USERS<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOutAM<i className="bi bi-star-fill"></i>
@@ -118,7 +122,7 @@ export const DashboardPage = () => {
             </div>
           </div>
         </nav>
-        <div className="content">{activeView === "user" && <UsersPage />}</div>
+        {/* <div className="content">{activeView === "user" && <UsersPage />}</div> */}
         {/* <!-- Script para responsive - movil--> */}
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
