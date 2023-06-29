@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const AddUser = () => {
     const navigate = useNavigate()
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
 
     const addUser = async (e) => {
         try {
@@ -19,10 +23,11 @@ export const AddUser = () => {
                 ingresosMensuales: document.getElementById('inputIngMensuales').value,
                 balance: document.getElementById('inputBalance').value
             }
-            const { data } = await axios.post('http://localhost:3000/user/createAccount', user)
+            console.log(headers, '2')
+            const { data } = await axios.post('http://localhost:3000/user/createAccount', user, {headers: headers})
             alert(data.message)
             clear();
-            navigate('/home/users')
+            navigate('/dash/user')
         } catch (err) {
             alert(err.response.data.message)
         }
@@ -50,45 +55,44 @@ export const AddUser = () => {
             <form className="m-5 text-center">
                 <div className="mb-3">
                     <label htmlFor="inputDPI" className="form-label">DPI</label>
-                    <input type="text" className="form-control" id="inputDPI" required />
+                    <input type="text" className="form-control" id="inputDPI" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputName" className="form-label">Name</label>
-                    <input type="text" className="form-control" id="inputName" required />
+                    <input type="text" className="form-control" id="inputName"/>
                 </div>
                 <div>
                     <label htmlFor="inputSurname" className="form-label">Surname</label>
-                    <input type="text" className="form-control" id="inputSurname" required />
+                    <input type="text" className="form-control" id="inputSurname"/>
                 </div>
                 <div>
                     <label htmlFor="inputUsername" className="form-label">Username</label>
-                    <input type="text" className="form-control" id="inputUsername" required />
+                    <input type="text" className="form-control" id="inputUsername"/>
                 </div>
                 <div>
                     <label htmlFor="inputPassword" className="form-label">Password</label>
-                    <input type="text" className="form-control" id="inputPassword" required />
+                    <input type="text" className="form-control" id="inputPassword"/>
                 </div>
                 <div>
                     <label htmlFor="inputEmail" className="form-label">Email</label>
-                    <input type="text" className="form-control" id="inputEmail" required />
+                    <input type="text" className="form-control" id="inputEmail"/>
                 </div>
                 <div>
                     <label htmlFor="inputDirection" className="form-label">Direction</label>
-                    <input type="text" className="form-control" id="inputDirection" required />
+                    <input type="text" className="form-control" id="inputDirection"/>
                 </div>
                 <div>
                     <label htmlFor="inputIngMensuales" className="form-label">Ingresos Mensuales</label>
-                    <input type="number" className="form-control" id="inputIngMensuales" required />
+                    <input type="number" className="form-control" id="inputIngMensuales"/>
                 </div>
                 <div>
                     <label htmlFor="inputBalance" className="form-label">Balance</label>
-                    <input type="number" className="form-control" id="inputBalance" required />
+                    <input type="number" className="form-control" id="inputBalance"/>
                 </div>  
                 <br></br>
-
                 <button onClick={(e) => addUser(e)} className="btn btn-success m-1">Create</button>
 
-                <Link to="/home/users">
+                <Link to='/dash/user'>
                     <button className="btn btn-danger m-1">Cancel</button>
                 </Link>
             </form>

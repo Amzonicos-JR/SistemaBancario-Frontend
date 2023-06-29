@@ -7,10 +7,13 @@ export const UpdateUser = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
     const { _id } = useParams();
-
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
     const getUser = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:3000/user/getAccount/${_id}`)
+            const { data } = await axios.get(`http://localhost:3000/user/getAccount/${_id}`, { headers: headers })
             if (data.user) {
                 console.log(data.user, 'xxx')
                 setUser(data.user)
@@ -38,7 +41,7 @@ export const UpdateUser = () => {
 
             const { data } = await axios.put(`http://localhost:3000/user/update/${_id}`, updateUser)
             alert(data.message)
-            navigate('/home/users')
+            navigate('user')
         } catch (err) {
             console.error(err)
         }
@@ -55,7 +58,7 @@ export const UpdateUser = () => {
             <form className="m-5 text-center">
                 <div className="mb-3">
                     <label htmlFor="inputDPI" className="form-label">DPI</label>
-                    <input type="text" className="form-control" id="inputDPI" defaultValue={user.DPI}/>
+                    <input type="text" className="form-control" id="inputDPI" defaultValue={user.DPI} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputName" className="form-label">Name</label>

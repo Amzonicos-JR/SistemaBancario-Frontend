@@ -2,15 +2,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { User } from "./User";
-
 export const TableUser = () => {
 
     const [iAccount, setIDAccount] = useState();
     const [users, setUsers] = useState([{}]);
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
 
     const getUsers = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3000/user/getAccounts')
+            const { data } = await axios.get('http://localhost:3000/user/getAccounts', {headers: headers})
+            console.log(data)
             if (data.users) {
                 setUsers(data.users)
             }
@@ -26,7 +30,7 @@ export const TableUser = () => {
         try {
             let confirmDelete = confirm('Are you sure to delete this account?')
             if (confirmDelete) {
-                const { data } = await axios.delete(`http://localhost:3000/user/delete/${id}`)
+                const { data } = await axios.delete(`http://localhost:3000/user/delete/${id}`, {headers: headers})
                 getUsers()
                 alert(`${data.message}`)
             }
@@ -35,8 +39,11 @@ export const TableUser = () => {
         }
     }
 
-    useEffect(() => getUsers, [])
-
+ 
+    useEffect(() => {
+        getUsers();
+      }, []);
+    
     return (
         <>
             <br />
@@ -55,7 +62,7 @@ export const TableUser = () => {
                 </thead>
                 <tbody>
                     {
-                        users.map(({ _id, DPI,noCuenta, name, surname, email, balance }, index) => {
+                        users.map(({ _id, DPI, noCuenta, name, surname, email, balance }, index) => {
                             return (
                                 <tr className="text-center" key={index}>
                                     <User
@@ -67,7 +74,7 @@ export const TableUser = () => {
                                         balance={balance}
                                     ></User>
                                     <td>
-                                        <Link to={`/home/users/updateuser/${_id}`}>
+                                        <Link to={`users/updateuser/${_id}`}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                 <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
