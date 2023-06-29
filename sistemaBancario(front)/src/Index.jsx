@@ -13,6 +13,11 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
     import { GetUser } from './pages/Users/GetUser';
     import { UpdateUser } from './pages/Users/UpdateUser';
 
+//  --------------- Deposit ---------------
+     import { DepositPage } from './pages/Deposits/DepositPage'; 
+     import { GetDeposit } from './pages/Deposits/GetDeposit';
+    import { AddDeposit } from './pages/Deposits/AddDeposit'; 
+
 /* CLIENT */
 //  -------------- Products ---------------
     import { ProductPage } from './pages/product/ProductPage';
@@ -20,6 +25,11 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
     import { UpdateProduct } from "./pages/product/UpdateProduct";
     import { DeleteProduct } from "./pages/product/DeleteProduct";
     import { AddProduct } from "./pages/product/AddProduct";
+//  -------------- Transfers ---------------
+import { TransferPage } from './pages/Transfers/TransferPage';
+import { GetTransfers } from './pages/Transfers/GetTransfers';
+import { AddTransfer } from './pages/Transfers/AddTransfer';
+
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -64,6 +74,20 @@ export const Index = () => {
                     element: <UpdateUser></UpdateUser>
                 }
             ]
+        },
+        {
+            path: 'deposit',
+            element: <DepositPage></DepositPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetDeposit></GetDeposit>
+                },
+                {
+                    path: 'addD',
+                    element: <AddDeposit></AddDeposit>
+                }
+            ]
         }
     ]
 
@@ -90,6 +114,20 @@ export const Index = () => {
                 {
                     path: 'delete',
                     element: <DeleteProduct></DeleteProduct>
+                }
+            ]
+        },
+        {
+            path: 'transfer',
+            element: <TransferPage></TransferPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetTransfers></GetTransfers>
+                },
+                {
+                    path: 'addT',
+                    element: <AddTransfer></AddTransfer>
                 }
             ]
         }
