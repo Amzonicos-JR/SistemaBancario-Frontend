@@ -21,18 +21,13 @@ export const DashboardPage = () => {
         {x === "ADMINAM" ? (
           <>
             <li className="nav-item">
-              <Link to={"user"} className="nav-link">
-                USERS<i className="bi bi-star-fill"></i>
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to={"deposit"} className="nav-link">
                 Deposits<i className="bi bi-star-fill"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
-                LogOutAM<i className="bi bi-star-fill"></i>
+                LogOut<i className="bi bi-star-fill"></i>
               </Link>
             </li>
           </>
@@ -47,14 +42,9 @@ export const DashboardPage = () => {
                 Transfer<i className="bi bi-star-fill"></i>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to={"product"} className="nav-link">
-                Product<i className="bi bi-star-fill"></i>
-              </Link>
-            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
-                LogOutClie<i className="bi bi-star-fill"></i>
+                LogOut<i className="bi bi-star-fill"></i>
               </Link>
             </li>
           </>
