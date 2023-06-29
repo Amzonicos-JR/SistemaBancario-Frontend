@@ -10,12 +10,15 @@ import { ProductPage } from './pages/product/ProductPage';
 import { GetProducts } from "./pages/product/GetProducts";
 import { UpdateProduct } from "./pages/product/UpdateProduct";
 import { AddProduct } from "./pages/product/AddProduct";
+import { ProductClientPage } from './pages/product/ProductClientPage';
+import { GetProductsForClient } from './pages/product/GetProductsForClient'
+import { BuyProduct } from './pages/product/BuyProduct';
 
 export const AuthContext = createContext();
 export const Index = () => {
-    const [role, setRole] = useState('')
+    const [role, setRole] = useState("ADMIN")
     const [id, setId] = useState('')
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(true)
 
     const [dataUser, setDataUser] = useState({
         name: '',
@@ -36,7 +39,7 @@ export const Index = () => {
         }
     }, [])
 
-    const ADMINAMRoutes = [
+    const ADMINRoutes = [
         {
             path: 'product',
             element: <ProductPage></ProductPage>,
@@ -59,11 +62,24 @@ export const Index = () => {
 /*
     const ADMINRoutes = [
     ]
-
-    const CLIENTRoutes = [
-
-    ]
 */
+    const CLIENTRoutes = [
+        {
+            path: 'product',
+            element: <ProductClientPage></ProductClientPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProductsForClient></GetProductsForClient>
+                },
+                {
+                    path: 'buy/:id',
+                    element: <BuyProduct></BuyProduct>
+                }
+            ]
+        }
+    ]
+
     const routes = createBrowserRouter([
         {
             path: '/',
@@ -80,9 +96,8 @@ export const Index = () => {
                 },
                 {
                     path: '/home',
-                    element:/*  loggedIn ? */ <DashboardPage></DashboardPage>, /* : <LoginPage></LoginPage> */
-                    children: /* role === "ADMINAM" ? */ ADMINAMRoutes /* : */
-                    //     role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
+                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
+                    children:  role === "ADMIN" ?  ADMINRoutes : CLIENTRoutes 
                 }
             ]
         }

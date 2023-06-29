@@ -6,19 +6,6 @@ export const UpdateProduct = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const [form, setForm] = useState({
-    name: "",
-    description: "",
-    price: "",
-    stock: "",
-  });
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const getProduct = async () => {
     try {
@@ -36,12 +23,19 @@ export const UpdateProduct = () => {
   };
 
   const updateProduct = async () => {
+    let form = {
+      name: document.getElementById("inputName").value,
+      description: document.getElementById("inputDescription").value,
+      price: document.getElementById("inputPrice").value,
+      stock: document.getElementById("inputStock").value
+    }
+
     try {
       const { data } = await axios.put(
         `http://localhost:3000/product/update/${id}`,
         form
       );
-      if (data.message) {
+      if (data) {
         alert(data.message);
         navigate("/home/product");
       }
@@ -63,7 +57,6 @@ export const UpdateProduct = () => {
         <div className="form-group">
           <label>Name</label>
           <input
-            onChange={handleChange}
             id="inputName"
             name="name"
             type="text"
@@ -75,7 +68,6 @@ export const UpdateProduct = () => {
         <div className="form-group">
           <label>Description</label>
           <input
-            onChange={handleChange}
             id="inputDescription"
             name="description"
             type="text"
@@ -87,13 +79,12 @@ export const UpdateProduct = () => {
         <div className="form-group">
           <label>Price</label>
           <input
-            onChange={handleChange}
             id="inputPrice"
             name="price"
             type="number"
             className="form-control"
             placeholder="Price"
-            defaultValue={product.price}
+            value="123"
           />
         </div>
         <div className="form-group">
