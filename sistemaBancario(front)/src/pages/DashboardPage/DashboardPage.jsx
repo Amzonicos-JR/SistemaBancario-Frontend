@@ -25,6 +25,11 @@ export const DashboardPage = () => {
                 USERS<i className="bi bi-star-fill"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"deposit"} className="nav-link">
+                Deposits<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOutAM<i className="bi bi-star-fill"></i>
@@ -37,6 +42,11 @@ export const DashboardPage = () => {
           </>
         ) : (
           <>
+            <li className="nav-item">
+              <Link to={"transfer"} className="nav-link">
+                Transfer<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
             <li className="nav-item">
               <Link to={"product"} className="nav-link">
                 Product<i className="bi bi-star-fill"></i>
@@ -56,7 +66,7 @@ export const DashboardPage = () => {
   const logOut = () => {
     localStorage.clear();
     setLoggedIn(false);
-    navigate("/login");
+    navigate('/');
   };
 
   return (
