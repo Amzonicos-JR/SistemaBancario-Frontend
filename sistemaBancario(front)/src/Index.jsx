@@ -9,9 +9,9 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 /* ADMINAM */
 
 //  --------------- Deposit ---------------
-     import { DepositPage } from './pages/Deposits/DepositPage'; 
-     import { GetDeposit } from './pages/Deposits/GetDeposit';
-    import { AddDeposit } from './pages/Deposits/AddDeposit'; 
+import { DepositPage } from './pages/Deposits/DepositPage';
+import { GetDeposit } from './pages/Deposits/GetDeposit';
+import { AddDeposit } from './pages/Deposits/AddDeposit';
 
 /* CLIENT */
 
@@ -20,6 +20,10 @@ import { TransferPage } from './pages/Transfers/TransferPage';
 import { GetTransfers } from './pages/Transfers/GetTransfers';
 import { AddTransfer } from './pages/Transfers/AddTransfer';
 
+import ServiceClient from './pages/ServicesBank/ServiceClient';
+import { ServiceADM } from './pages/ServicesBank/ServiceADM';
+import LoanPage from './pages/LoanPage';
+import GraphicsPage from './pages/GraphicsPage';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -60,10 +64,20 @@ export const Index = () => {
                     element: <AddDeposit></AddDeposit>
                 }
             ]
+        },
+        {
+            path: 'service',
+            element: <ServiceADM></ServiceADM>
+        },
+        {
+            path: 'loan',
+            element: <LoanPage></LoanPage>
+        },
+        {
+            path: 'graphic',
+            element: <GraphicsPage></GraphicsPage>
         }
-    ]
 
-    const ADMINRoutes = [
     ]
 
     const CLIENTRoutes = [
@@ -80,7 +94,12 @@ export const Index = () => {
                     element: <AddTransfer></AddTransfer>
                 }
             ]
+        }, 
+        {
+            path: 'servicesClient',
+            element: <ServiceClient></ServiceClient>
         }
+
     ]
 
     const routes = createBrowserRouter([
