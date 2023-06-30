@@ -10,7 +10,7 @@ export const UpdateProduct = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/product/getProduct/${id}`
+        `http://localhost:3000/product/get/${id}`
       );
       if(data){
         setProduct(data.product)
@@ -35,9 +35,9 @@ export const UpdateProduct = () => {
         `http://localhost:3000/product/update/${id}`,
         form
       );
-      if (data) {
+      if (data.message) {
         alert(data.message);
-        navigate("/home/product");
+        navigate("/dash/product");
       }
     } catch (err) {
       console.error(err);
@@ -84,7 +84,7 @@ export const UpdateProduct = () => {
             type="number"
             className="form-control"
             placeholder="Price"
-            value="123"
+            defaultValue={product.price}
           />
         </div>
         <div className="form-group">
@@ -107,7 +107,7 @@ export const UpdateProduct = () => {
           Actualizar
         </button>
 
-        <Link to={"/home/product"}>
+        <Link to={"/dash/product"}>
           <button type="button" className="btn btn-primary btn-lg btn-block">
             Cancelar
           </button>

@@ -22,9 +22,9 @@ export const AddProduct = () => {
     try {
       e.preventDefault();
       const { data } = await axios.post('http://localhost:3000/product/add', form)
-      if(data.message){
+      if(data){
         alert(data.message)
-        navigate('/home/product')
+        navigate('/dash/product')
       }
     } catch (err) {
       console.error(err);
@@ -90,7 +90,7 @@ export const AddProduct = () => {
           Agregar
         </button>
 
-        <Link to={"/home/product"}>
+        <Link to={"/dash/product"}>
           <button type="button" className="btn btn-primary btn-lg btn-block">
             Cancelar
           </button>

@@ -5,20 +5,40 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
-//  ---------------Products
+
+/* ADMINAM */
+
+//  --------------- Deposit ---------------
+import { DepositPage } from './pages/Deposits/DepositPage';
+import { GetDeposit } from './pages/Deposits/GetDeposit';
+import { AddDeposit } from './pages/Deposits/AddDeposit';
+
+/* CLIENT */
+
+//  -------------- Transfers ---------------
+import { TransferPage } from './pages/Transfers/TransferPage';
+import { GetTransfers } from './pages/Transfers/GetTransfers';
+import { AddTransfer } from './pages/Transfers/AddTransfer';
+
+import ServiceClient from './pages/ServicesBank/ServiceClient';
+import { ServiceADM } from './pages/ServicesBank/ServiceADM';
+import LoanPage from './pages/LoanPage';
+import GraphicsPage from './pages/GraphicsPage';
+
+// -------------- Products ---------------
 import { ProductPage } from './pages/product/ProductPage';
 import { GetProducts } from "./pages/product/GetProducts";
 import { UpdateProduct } from "./pages/product/UpdateProduct";
 import { AddProduct } from "./pages/product/AddProduct";
-import { ProductClientPage } from './pages/product/ProductClientPage';
-import { GetProductsForClient } from './pages/product/GetProductsForClient'
+import { ProductClientPage } from "./pages/product/ProductClientPage"
+import { GetProductsForClient } from './pages/product/GetProductsForClient';
 import { BuyProduct } from './pages/product/BuyProduct';
 
 export const AuthContext = createContext();
 export const Index = () => {
-    const [role, setRole] = useState("ADMIN")
+    const [role, setRole] = useState('')
     const [id, setId] = useState('')
-    const [loggedIn, setLoggedIn] = useState(true)
+    const [loggedIn, setLoggedIn] = useState(false)
 
     const [dataUser, setDataUser] = useState({
         name: '',
@@ -39,7 +59,33 @@ export const Index = () => {
         }
     }, [])
 
-    const ADMINRoutes = [
+    const ADMINAMRoutes = [
+        {
+            path: 'deposit',
+            element: <DepositPage></DepositPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetDeposit></GetDeposit>
+                },
+                {
+                    path: 'addD',
+                    element: <AddDeposit></AddDeposit>
+                }
+            ]
+        },
+        {
+            path: 'service',
+            element: <ServiceADM></ServiceADM>
+        },
+        {
+            path: 'loan',
+            element: <LoanPage></LoanPage>
+        },
+        {
+            path: 'graphic',
+            element: <GraphicsPage></GraphicsPage>
+        },
         {
             path: 'product',
             element: <ProductPage></ProductPage>,
@@ -58,12 +104,28 @@ export const Index = () => {
                 }
             ]
         }
+
     ]
-/*
-    const ADMINRoutes = [
-    ]
-*/
+
     const CLIENTRoutes = [
+        {
+            path: 'transfer',
+            element: <TransferPage></TransferPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetTransfers></GetTransfers>
+                },
+                {
+                    path: 'addT',
+                    element: <AddTransfer></AddTransfer>
+                }
+            ]
+        }, 
+        {
+            path: 'servicesClient',
+            element: <ServiceClient></ServiceClient>
+        },
         {
             path: 'product',
             element: <ProductClientPage></ProductClientPage>,
@@ -78,6 +140,7 @@ export const Index = () => {
                 }
             ]
         }
+
     ]
 
     const routes = createBrowserRouter([
@@ -88,17 +151,19 @@ export const Index = () => {
             children: [
                 {
                     path: '/',
-                    element: <HomePage />
+                    element: <LoginPage />
                 },
                 {
-                    path: '/login',
-                    element: <LoginPage></LoginPage>
-                },
-                {
-                    path: '/home',
+                    path: '/dash',
                     element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
-                    children:  role === "ADMIN" ?  ADMINRoutes : CLIENTRoutes 
+                    children: role === "ADMINAM" ? ADMINAMRoutes : CLIENTRoutes
                 }
+                // {
+                //     path: '/home',
+                //     element:/*  loggedIn ? */ <DashboardPage></DashboardPage>, /* : <LoginPage></LoginPage> */
+                //     children: /* role === "ADMINAM" ? */ ADMINAMRoutes /* : */
+                //     //     role === "ADMIN" ? ADMINRoutes : CLIENTRoutes
+                // }
             ]
         }
     ])

@@ -42,7 +42,7 @@ export const GetProductsForClient = () => {
                     <h5 className="card-title">Stock: {stock}</h5>
                   </div>
                   <div className="card-body">
-                    <Link to={`/home/product/buy/${_id}`}>
+                    <Link to={`/dash/product/buy/${_id}`}>
                       <button className="btn btn-warning">Buy</button>
                     </Link>
                   </div>

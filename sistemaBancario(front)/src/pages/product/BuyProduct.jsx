@@ -6,11 +6,19 @@ export const BuyProduct = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const navigate = useNavigate()
+  let idUser = localStorage.getItem('_id')
 
   const buy = async () => {
     try{
-      alert("Has comprando exitosamente este producto")
-      navigate("/home/product")
+      let form = {
+        user: idUser,
+        product: id,
+        amount: document.getElementById("inputAmount").value
+      }
+      //hacer la compra
+      const { data } = await axios.post("http://localhost:3000/purchases/buyProduct", form)
+      alert(data.message)
+      navigate("/dash/product")
     }catch(err){
       console.error(err)
       throw new Error("Error to buy product")
@@ -20,7 +28,7 @@ export const BuyProduct = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/product/getProduct/${id}`
+        `http://localhost:3000/product/get/${id}`
       );
       if (data) {
         setProduct(data.product);
@@ -39,7 +47,7 @@ export const BuyProduct = () => {
     <>
       <h1> Buy Product</h1>
       <h1 className="container">
-        <Link to={"/home/product"}>
+        <Link to={"/dash/product"}>
           <button className="btn btn-info">Regresar</button>
         </Link>
       </h1>
@@ -51,6 +59,18 @@ export const BuyProduct = () => {
             <h5 className="card-title">Price: ${product.price}</h5>
             <h5 className="card-text">Stock: {product.stock}</h5>
           </div>
+        </div>
+        <div>
+        <div className="form-group">
+          <label>Cantidad</label>
+          <input
+            id="inputAmount"
+            name="amount"
+            type="number"
+            className="form-control"
+            defaultValue="1"
+          />
+        </div>
         </div>
       </div>
       <h1 className="container">
