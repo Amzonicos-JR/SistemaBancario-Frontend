@@ -19,7 +19,22 @@ export const DashboardPage = () => {
     return (
       <>
         {x === "ADMINAM" ? (
-          <>            
+          <>
+            <li className="nav-item">
+              <Link to={"service"} className="nav-link">
+                Services<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"loan"} className="nav-link">
+                Loan<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"graphic"} className="nav-link">
+                Stats<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOutAM<i className="bi bi-star-fill"></i>
@@ -31,11 +46,6 @@ export const DashboardPage = () => {
           </>
         ) : (
           <>
-            <li className="nav-item">
-              <Link to={"product"} className="nav-link">
-                Product<i className="bi bi-star-fill"></i>
-              </Link>
-            </li>
             <li className="nav-item">
               <Link to={"servicesClient"} className="nav-link">
                 Services<i className="bi bi-star-fill"></i>

@@ -5,13 +5,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
-//  ---------------Products
-import { ProductPage } from './pages/product/ProductPage';
-import { GetProducts } from "./pages/product/GetProducts";
-import { UpdateProduct } from "./pages/product/UpdateProduct";
-import { DeleteProduct } from "./pages/product/DeleteProduct";
-import { AddProduct } from "./pages/product/AddProduct";
 import ServiceClient from './pages/ServicesBank/ServiceClient';
+import { ServiceADM } from './pages/ServicesBank/ServiceADM';
+import LoanPage from './pages/LoanPage';
+import GraphicsPage from './pages/GraphicsPage';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -38,7 +35,19 @@ export const Index = () => {
         }
     }, [])
 
-    const ADMINAMRoutes = [        
+    const ADMINAMRoutes = [       
+        {
+            path: 'service',
+            element: <ServiceADM></ServiceADM>
+        },
+        {
+            path: 'loan',
+            element: <LoanPage></LoanPage>
+        },
+        {
+            path:'graphic',
+            element: <GraphicsPage></GraphicsPage>
+        }
         // {
         //     path: 'product',
         //     element: <ProductPage></ProductPage>,
@@ -67,28 +76,6 @@ export const Index = () => {
     ]
 
     const CLIENTRoutes = [
-        {
-            path: 'product',
-            element: <ProductPage></ProductPage>,
-            children: [
-                {
-                    path: '',
-                    element: <GetProducts></GetProducts>
-                },
-                {
-                    path: 'add',
-                    element: <AddProduct></AddProduct>
-                },
-                {
-                    path: 'update',
-                    element: <UpdateProduct></UpdateProduct>
-                },
-                {
-                    path: 'delete',
-                    element: <DeleteProduct></DeleteProduct>
-                }
-            ]
-        },
         {
             path: 'servicesClient',
             element: <ServiceClient></ServiceClient>
