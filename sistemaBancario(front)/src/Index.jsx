@@ -7,6 +7,11 @@ import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 
 /* ADMINAM */
+//  --------------- USERS ---------------
+import { UserPage } from './pages/Users/UserPage';
+import { AddUser } from './pages/Users/AddUser';
+import { GetUser } from './pages/Users/GetUser';
+import { UpdateUser } from './pages/Users/UpdateUser';
 
 //  --------------- Deposit ---------------
 import { DepositPage } from './pages/Deposits/DepositPage';
@@ -14,6 +19,8 @@ import { GetDeposit } from './pages/Deposits/GetDeposit';
 import { AddDeposit } from './pages/Deposits/AddDeposit';
 
 /* CLIENT */
+import { ProfilePage } from './pages/Profile/ProfilePage';
+import { GetProfile } from './pages/Profile/GetProfile';
 
 //  -------------- Transfers ---------------
 import { TransferPage } from './pages/Transfers/TransferPage';
@@ -24,6 +31,15 @@ import ServiceClient from './pages/ServicesBank/ServiceClient';
 import { ServiceADM } from './pages/ServicesBank/ServiceADM';
 import LoanPage from './pages/LoanPage';
 import GraphicsPage from './pages/GraphicsPage';
+
+// -------------- Products ---------------
+import { ProductPage } from './pages/product/ProductPage';
+import { GetProducts } from "./pages/product/GetProducts";
+import { UpdateProduct } from "./pages/product/UpdateProduct";
+import { AddProduct } from "./pages/product/AddProduct";
+import { ProductClientPage } from "./pages/product/ProductClientPage"
+import { GetProductsForClient } from './pages/product/GetProductsForClient';
+import { BuyProduct } from './pages/product/BuyProduct';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -52,6 +68,24 @@ export const Index = () => {
 
     const ADMINAMRoutes = [
         {
+            path: 'user',
+            element: <UserPage></UserPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetUser></GetUser>
+                },
+                {
+                    path: 'adduser',
+                    element: <AddUser></AddUser>
+                },
+                {
+                    path: 'updateuser/:_id',
+                    element: <UpdateUser></UpdateUser>
+                }
+            ]
+        },
+        {
             path: 'deposit',
             element: <DepositPage></DepositPage>,
             children: [
@@ -76,11 +110,43 @@ export const Index = () => {
         {
             path: 'graphic',
             element: <GraphicsPage></GraphicsPage>
+        },
+        {
+            path: 'product',
+            element: <ProductPage></ProductPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProducts></GetProducts>
+                },
+                {
+                    path: 'add',
+                    element: <AddProduct></AddProduct>
+                },
+                {
+                    path: 'update/:id',
+                    element: <UpdateProduct></UpdateProduct>
+                }
+            ]
         }
 
     ]
 
     const CLIENTRoutes = [
+        {
+            path:'profile',
+            element:<ProfilePage/>,
+            children:[
+                {
+                    path:'',
+                    element:<GetProfile/>
+                }
+                /*{
+                    path:'edit',
+                    element:<EditUser/>
+                }*/
+            ]
+        },
         {
             path: 'transfer',
             element: <TransferPage></TransferPage>,
@@ -94,10 +160,24 @@ export const Index = () => {
                     element: <AddTransfer></AddTransfer>
                 }
             ]
-        }, 
+        },
         {
             path: 'servicesClient',
             element: <ServiceClient></ServiceClient>
+        },
+        {
+            path: 'product',
+            element: <ProductClientPage></ProductClientPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProductsForClient></GetProductsForClient>
+                },
+                {
+                    path: 'buy/:id',
+                    element: <BuyProduct></BuyProduct>
+                }
+            ]
         }
 
     ]

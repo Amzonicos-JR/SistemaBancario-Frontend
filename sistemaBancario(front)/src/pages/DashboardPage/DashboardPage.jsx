@@ -21,8 +21,18 @@ export const DashboardPage = () => {
         {x === "ADMINAM" ? (
           <>
             <li className="nav-item">
+              <Link to={"/dash/user"} className="nav-link">
+                Users <i className="bi bi-people-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to={"deposit"} className="nav-link">
                 Deposit<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"product"} className="nav-link">
+                Products<i className="bi bi-star-fill"></i>
               </Link>
             </li>
             <li className="nav-item">
@@ -52,8 +62,18 @@ export const DashboardPage = () => {
         ) : (
           <>
             <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to={"transfer"} className="nav-link">
                 Transfer<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"product"} className="nav-link">
+                Product<i className="bi bi-star-fill"></i>
               </Link>
             </li>
             <li className="nav-item">
