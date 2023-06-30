@@ -25,7 +25,7 @@ export const AddUser = () => {
             }
             console.log(headers, '2')
             const { data } = await axios.post('http://localhost:3000/user/createAccount', user, {headers: headers})
-            alert(data.message)
+            alert(`${data.message}`)
             clear();
             navigate('/dash/user')
         } catch (err) {

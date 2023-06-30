@@ -20,6 +20,8 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
     import { UpdateProduct } from "./pages/product/UpdateProduct";
     import { DeleteProduct } from "./pages/product/DeleteProduct";
     import { AddProduct } from "./pages/product/AddProduct";
+import { ProfilePage } from './pages/Profile/ProfilePage';
+import { GetProfile } from './pages/Profile/GetProfile';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -91,6 +93,20 @@ export const Index = () => {
                     path: 'delete',
                     element: <DeleteProduct></DeleteProduct>
                 }
+            ]
+        },
+        {
+            path:'profile',
+            element:<ProfilePage/>,
+            children:[
+                {
+                    path:'',
+                    element:<GetProfile/>
+                }
+                /*{
+                    path:'edit',
+                    element:<EditUser/>
+                }*/
             ]
         }
     ]

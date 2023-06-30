@@ -28,8 +28,7 @@ export const UpdateUser = () => {
     const updateUser = async (e) => {
         try {
             e.preventDefault();
-            let updateUser = {
-                DPI: document.getElementById('inputDPI').value,
+            let userUp = {
                 name: document.getElementById('inputName').value,
                 surname: document.getElementById('inputSurname').value,
                 username: document.getElementById('inputUsername').value,
@@ -39,9 +38,11 @@ export const UpdateUser = () => {
 
             }
 
-            const { data } = await axios.put(`http://localhost:3000/user/update/${_id}`, updateUser)
-            alert(data.message)
-            navigate('user')
+            const { data } = await axios.put(`http://localhost:3000/user/updateuser/${_id}`, userUp, {headers: headers})
+            getUser();
+            alert(`${data.message}`)
+
+            navigate('/dash/user')
         } catch (err) {
             console.error(err)
         }
@@ -56,10 +57,6 @@ export const UpdateUser = () => {
                 Update User
             </h1>
             <form className="m-5 text-center">
-                <div className="mb-3">
-                    <label htmlFor="inputDPI" className="form-label">DPI</label>
-                    <input type="text" className="form-control" id="inputDPI" defaultValue={user.DPI} />
-                </div>
                 <div className="mb-3">
                     <label htmlFor="inputName" className="form-label">Name</label>
                     <input type="text" className="form-control" id="inputName" defaultValue={user.name} />
@@ -86,7 +83,7 @@ export const UpdateUser = () => {
                 </div>
                 <br></br>
                 <button onClick={(e) => updateUser(e)} className="btn btn-success m-1">Update</button>
-                <Link to="/home/users">
+                <Link to='/dash/user'>
                     <button className="btn btn-danger m-1">Cancel</button>
                 </Link>
             </form>

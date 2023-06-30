@@ -21,9 +21,9 @@ export const DashboardPage = () => {
         {x === "ADMINAM" ? (
           <>
             <li className="nav-item">
-              <Link to={"user"} className="nav-link">
+              <Link to={"/dash/user"} className="nav-link">
                 Users <i className="bi bi-people-fill"></i>
-              </Link>
+              </Link> 
             </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
@@ -42,6 +42,11 @@ export const DashboardPage = () => {
                 Product<i className="bi bi-star-fill"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOutClie<i className="bi bi-star-fill"></i>
@@ -56,7 +61,7 @@ export const DashboardPage = () => {
   const logOut = () => {
     localStorage.clear();
     setLoggedIn(false);
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -77,9 +82,9 @@ export const DashboardPage = () => {
           <div className="container-fluid">
             {/* <!-- icono o nombre --> */}
             <a className="navbar-brand active">
-              <i className="bi bi-person-circle"></i>
+            <i class="bi bi-house-fill"></i>
               <Link to={""}>
-                <span className="text-info"> Dashboard</span>
+                <span className="text-info"> HOME</span>
               </Link>
             </a>
             {/* <!-- boton del menu para resolucion movil --> */}
