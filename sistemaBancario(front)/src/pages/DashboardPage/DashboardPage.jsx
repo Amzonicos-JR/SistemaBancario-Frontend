@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../DashboardPage/DashBoardStyle.css";
+import "../DashboardPage/NavBarStyle.less"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Index";
 import { Outlet, Link } from "react-router-dom";

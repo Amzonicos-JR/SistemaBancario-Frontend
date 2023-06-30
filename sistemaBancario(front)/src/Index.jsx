@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { NotFound } from './pages/NotFound';
-import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
@@ -19,8 +18,10 @@ import { GetDeposit } from './pages/Deposits/GetDeposit';
 import { AddDeposit } from './pages/Deposits/AddDeposit';
 
 /* CLIENT */
+//  -------------- User ---------------
 import { ProfilePage } from './pages/Profile/ProfilePage';
 import { GetProfile } from './pages/Profile/GetProfile';
+import { EditUser } from './pages/Profile/EditUser';
 
 //  -------------- Transfers ---------------
 import { TransferPage } from './pages/Transfers/TransferPage';
@@ -132,7 +133,11 @@ export const Index = () => {
 
     ]
 
+    const ADMINRoutes = [
+    ]
+
     const CLIENTRoutes = [
+        
         {
             path:'profile',
             element:<ProfilePage/>,
@@ -140,11 +145,11 @@ export const Index = () => {
                 {
                     path:'',
                     element:<GetProfile/>
-                }
-                /*{
+                },
+                {
                     path:'edit',
                     element:<EditUser/>
-                }*/
+                }
             ]
         },
         {
