@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { NotFound } from './pages/NotFound';
-import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
@@ -13,15 +12,10 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
     import { GetUser } from './pages/Users/GetUser';
     import { UpdateUser } from './pages/Users/UpdateUser';
 
-/* CLIENT */
-//  -------------- Products ---------------
-    import { ProductPage } from './pages/product/ProductPage';
-    import { GetProducts } from "./pages/product/GetProducts";
-    import { UpdateProduct } from "./pages/product/UpdateProduct";
-    import { DeleteProduct } from "./pages/product/DeleteProduct";
-    import { AddProduct } from "./pages/product/AddProduct";
+
 import { ProfilePage } from './pages/Profile/ProfilePage';
 import { GetProfile } from './pages/Profile/GetProfile';
+import { EditUser } from './pages/Profile/EditUser';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -73,28 +67,7 @@ export const Index = () => {
     ]
 
     const CLIENTRoutes = [
-        {
-            path: 'product',
-            element: <ProductPage></ProductPage>,
-            children: [
-                {
-                    path: '',
-                    element: <GetProducts></GetProducts>
-                },
-                {
-                    path: 'add',
-                    element: <AddProduct></AddProduct>
-                },
-                {
-                    path: 'update',
-                    element: <UpdateProduct></UpdateProduct>
-                },
-                {
-                    path: 'delete',
-                    element: <DeleteProduct></DeleteProduct>
-                }
-            ]
-        },
+        
         {
             path:'profile',
             element:<ProfilePage/>,
@@ -102,11 +75,11 @@ export const Index = () => {
                 {
                     path:'',
                     element:<GetProfile/>
-                }
-                /*{
+                },
+                {
                     path:'edit',
                     element:<EditUser/>
-                }*/
+                }
             ]
         }
     ]

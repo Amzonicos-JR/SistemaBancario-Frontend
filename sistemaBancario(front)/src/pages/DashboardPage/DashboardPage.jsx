@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../DashboardPage/DashBoardStyle.css";
+import "../DashboardPage/NavBarStyle.less"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Index";
 import { Outlet, Link } from "react-router-dom";
@@ -43,7 +44,7 @@ export const DashboardPage = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"profile"} className="nav-link">
+              <Link to={"profile"} className="nav-link  outline white-green">
                 Profile<i className="bi bi-star-fill"></i>
               </Link>
             </li>
