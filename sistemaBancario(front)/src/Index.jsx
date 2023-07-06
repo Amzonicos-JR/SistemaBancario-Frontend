@@ -25,6 +25,12 @@ import { ServiceADM } from './pages/ServicesBank/ServiceADM';
 import LoanPage from './pages/LoanPage';
 import GraphicsPage from './pages/GraphicsPage';
 
+// -------------- Favorites ---------------
+import { FavoritePage } from './pages/Favorites/FavoritePage';
+import { GetFavorites } from "./pages/Favorites/GetFavorites";
+/* import { UpdateFavorite } from "./pages/Favorites/UpdateFavorite"; */
+import { AddFavorite } from "./pages/Favorites/AddFavorite";
+
 export const AuthContext = createContext();
 export const Index = () => {
     const [role, setRole] = useState('')
@@ -98,6 +104,24 @@ export const Index = () => {
         {
             path: 'servicesClient',
             element: <ServiceClient></ServiceClient>
+        },
+        {
+            path: 'favorite',
+            element: <FavoritePage></FavoritePage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetFavorites></GetFavorites>
+                },
+                {
+                    path: 'addfavorite',
+                    element: <AddFavorite></AddFavorite>
+                }
+                /* {
+                    path: 'updatefavorite/:_id',
+                    element: <UpdateFavorite></UpdateFavorite>
+                } */
+            ]
         }
 
     ]
