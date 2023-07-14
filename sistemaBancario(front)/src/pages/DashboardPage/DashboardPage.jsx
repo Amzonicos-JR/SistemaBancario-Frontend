@@ -82,6 +82,11 @@ export const DashboardPage = () => {
                 Services<i className="bi bi-star-fill"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"favorite"} className="nav-link">
+                Favorites<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut<i className="bi bi-star-fill"></i>

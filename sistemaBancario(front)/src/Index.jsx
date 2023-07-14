@@ -41,6 +41,12 @@ import { AddProduct } from "./pages/product/AddProduct";
 import { ProductClientPage } from "./pages/product/ProductClientPage"
 import { GetProductsForClient } from './pages/product/GetProductsForClient';
 import { BuyProduct } from './pages/product/BuyProduct';
+// -------------- Favorites ---------------
+import { FavoritePage } from './pages/Favorites/FavoritePage';
+import { GetFavorites } from "./pages/Favorites/GetFavorites";
+/* import { UpdateFavorite } from "./pages/Favorites/UpdateFavorite"; */
+import { AddFavorite } from "./pages/Favorites/AddFavorite";
+import { UpdateFavorite } from './pages/Favorites/UpdateFavorite';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -137,18 +143,18 @@ export const Index = () => {
     ]
 
     const CLIENTRoutes = [
-        
+
         {
-            path:'profile',
-            element:<ProfilePage/>,
-            children:[
+            path: 'profile',
+            element: <ProfilePage />,
+            children: [
                 {
-                    path:'',
-                    element:<GetProfile/>
+                    path: '',
+                    element: <GetProfile />
                 },
                 {
-                    path:'edit',
-                    element:<EditUser/>
+                    path: 'edit',
+                    element: <EditUser />
                 }
             ]
         },
@@ -181,6 +187,24 @@ export const Index = () => {
                 {
                     path: 'buy/:id',
                     element: <BuyProduct></BuyProduct>
+                }
+            ]
+        },
+        {
+            path: 'favorite',
+            element: <FavoritePage></FavoritePage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetFavorites></GetFavorites>
+                },
+                {
+                    path: 'addfavorite',
+                    element: <AddFavorite></AddFavorite>
+                },
+                {
+                    path: 'updatefavorite/:_id',
+                    element: <UpdateFavorite></UpdateFavorite>
                 }
             ]
         }
