@@ -27,6 +27,7 @@ import { EditUser } from './pages/Profile/EditUser';
 import { TransferPage } from './pages/Transfers/TransferPage';
 import { GetTransfers } from './pages/Transfers/GetTransfers';
 import { AddTransfer } from './pages/Transfers/AddTransfer';
+import { TransferF } from './pages/Transfers/TransferF';
 
 import ServiceClient from './pages/ServicesBank/ServiceClient';
 import { ServiceADM } from './pages/ServicesBank/ServiceADM';
@@ -205,6 +206,10 @@ export const Index = () => {
                 {
                     path: 'updatefavorite/:_id',
                     element: <UpdateFavorite></UpdateFavorite>
+                },
+                {
+                    path:'transferF/:_id',
+                    element: <TransferF></TransferF>
                 }
             ]
         }

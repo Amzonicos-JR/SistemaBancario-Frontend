@@ -28,7 +28,7 @@ export const TableTransfer = () => {
     const deleteTransfer = async (id) => {
         try {
             let confirmDelete = confirm('Are you sure to reverse the transfer ?')
-            const { data } = await axios.put(`http://localhost:3000/transfer/revertirT/${id}`, { headers: headers })
+            const { data } = await axios.put(`http://localhost:3000/transfer/revertirT/${id}`)
             if (confirmDelete) {
                 alert(`${data.message}`)
                 getTransfers()

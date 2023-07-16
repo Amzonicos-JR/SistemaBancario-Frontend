@@ -30,8 +30,8 @@ export const UpdateFavorite = () => {
                 apodo: document.getElementById('inputApodo').value
             }
             const { data } = await axios.put(`http://localhost:3000/favorite/update/${_id}`, updateF, { headers: headers })
-            getFavorites
             alert(`${data.message}`)
+            getFavorites();
 
             navigate('/dash/favorite/')
         } catch (err) {

@@ -22,7 +22,7 @@ export const AddFavorite = () => {
             }
             console.log(headers, '2')
             const { data } = await axios.post('http://localhost:3000/favorite/add', favorite, {headers: headers})
-            console.log(data)
+            alert(`${data.message}`)
             resetAdd()
             navigate('/dash/favorite')
         } catch (err) {
