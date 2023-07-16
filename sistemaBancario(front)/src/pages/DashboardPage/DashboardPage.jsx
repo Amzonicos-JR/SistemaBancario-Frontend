@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../DashboardPage/DashBoardStyle.css";
+import "../DashboardPage/NavBarStyle.less"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Index";
 import { Outlet, Link } from "react-router-dom";
@@ -20,6 +21,11 @@ export const DashboardPage = () => {
       <>
         {x === "ADMINAM" ? (
           <>
+            <li className="nav-item">
+              <Link to={"/dash/user"} className="nav-link">
+                Users <i className="bi bi-people-fill"></i>
+              </Link>
+            </li>
             <li className="nav-item">
               <Link to={"deposit"} className="nav-link">
                 Deposit<i className="bi bi-star-fill"></i>
@@ -57,6 +63,11 @@ export const DashboardPage = () => {
         ) : (
           <>
             <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to={"transfer"} className="nav-link">
                 Transfer<i className="bi bi-star-fill"></i>
               </Link>
@@ -65,10 +76,15 @@ export const DashboardPage = () => {
               <Link to={"product"} className="nav-link">
                 Product<i className="bi bi-star-fill"></i>
               </Link>
-            </li>            
+            </li>
             <li className="nav-item">
               <Link to={"servicesClient"} className="nav-link">
                 Services<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"favorite"} className="nav-link">
+                Favorites<i className="bi bi-star-fill"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">

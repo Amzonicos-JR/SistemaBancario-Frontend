@@ -1,12 +1,16 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { NotFound } from './pages/NotFound';
-import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 
 /* ADMINAM */
+//  --------------- USERS ---------------
+import { UserPage } from './pages/Users/UserPage';
+import { AddUser } from './pages/Users/AddUser';
+import { GetUser } from './pages/Users/GetUser';
+import { UpdateUser } from './pages/Users/UpdateUser';
 
 //  --------------- Deposit ---------------
 import { DepositPage } from './pages/Deposits/DepositPage';
@@ -14,11 +18,16 @@ import { GetDeposit } from './pages/Deposits/GetDeposit';
 import { AddDeposit } from './pages/Deposits/AddDeposit';
 
 /* CLIENT */
+//  -------------- User ---------------
+import { ProfilePage } from './pages/Profile/ProfilePage';
+import { GetProfile } from './pages/Profile/GetProfile';
+import { EditUser } from './pages/Profile/EditUser';
 
 //  -------------- Transfers ---------------
 import { TransferPage } from './pages/Transfers/TransferPage';
 import { GetTransfers } from './pages/Transfers/GetTransfers';
 import { AddTransfer } from './pages/Transfers/AddTransfer';
+import { TransferF } from './pages/Transfers/TransferF';
 
 import ServiceClient from './pages/ServicesBank/ServiceClient';
 import { ServiceADM } from './pages/ServicesBank/ServiceADM';
@@ -33,6 +42,12 @@ import { AddProduct } from "./pages/product/AddProduct";
 import { ProductClientPage } from "./pages/product/ProductClientPage"
 import { GetProductsForClient } from './pages/product/GetProductsForClient';
 import { BuyProduct } from './pages/product/BuyProduct';
+// -------------- Favorites ---------------
+import { FavoritePage } from './pages/Favorites/FavoritePage';
+import { GetFavorites } from "./pages/Favorites/GetFavorites";
+/* import { UpdateFavorite } from "./pages/Favorites/UpdateFavorite"; */
+import { AddFavorite } from "./pages/Favorites/AddFavorite";
+import { UpdateFavorite } from './pages/Favorites/UpdateFavorite';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -60,6 +75,24 @@ export const Index = () => {
     }, [])
 
     const ADMINAMRoutes = [
+        {
+            path: 'user',
+            element: <UserPage></UserPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetUser></GetUser>
+                },
+                {
+                    path: 'adduser',
+                    element: <AddUser></AddUser>
+                },
+                {
+                    path: 'updateuser/:_id',
+                    element: <UpdateUser></UpdateUser>
+                }
+            ]
+        },
         {
             path: 'deposit',
             element: <DepositPage></DepositPage>,
@@ -107,7 +140,25 @@ export const Index = () => {
 
     ]
 
+    const ADMINRoutes = [
+    ]
+
     const CLIENTRoutes = [
+
+        {
+            path: 'profile',
+            element: <ProfilePage />,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile />
+                },
+                {
+                    path: 'edit',
+                    element: <EditUser />
+                }
+            ]
+        },
         {
             path: 'transfer',
             element: <TransferPage></TransferPage>,
@@ -121,7 +172,7 @@ export const Index = () => {
                     element: <AddTransfer></AddTransfer>
                 }
             ]
-        }, 
+        },
         {
             path: 'servicesClient',
             element: <ServiceClient></ServiceClient>
@@ -137,6 +188,28 @@ export const Index = () => {
                 {
                     path: 'buy/:id',
                     element: <BuyProduct></BuyProduct>
+                }
+            ]
+        },
+        {
+            path: 'favorite',
+            element: <FavoritePage></FavoritePage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetFavorites></GetFavorites>
+                },
+                {
+                    path: 'addfavorite',
+                    element: <AddFavorite></AddFavorite>
+                },
+                {
+                    path: 'updatefavorite/:_id',
+                    element: <UpdateFavorite></UpdateFavorite>
+                },
+                {
+                    path:'transferF/:_id',
+                    element: <TransferF></TransferF>
                 }
             ]
         }
