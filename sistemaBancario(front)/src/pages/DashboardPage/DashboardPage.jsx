@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../DashboardPage/DashBoardStyle.css";
+import "../DashboardPage/NavBarStyle.less"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Index";
 import { Outlet, Link } from "react-router-dom";
@@ -21,6 +22,21 @@ export const DashboardPage = () => {
         {x === "ADMINAM" ? (
           <>
             <li className="nav-item">
+              <Link to={"/dash/user"} className="nav-link">
+                Users <i className="bi bi-people-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"deposit"} className="nav-link">
+                Deposit<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"product"} className="nav-link">
+                Products<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to={"service"} className="nav-link">
                 Services<i className="bi bi-star-fill"></i>
               </Link>
@@ -37,7 +53,7 @@ export const DashboardPage = () => {
             </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
-                LogOutAM<i className="bi bi-star-fill"></i>
+                LogOut<i className="bi bi-star-fill"></i>
               </Link>
             </li>
           </>
@@ -47,15 +63,40 @@ export const DashboardPage = () => {
         ) : (
           <>
             <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"transfer"} className="nav-link">
+                Transfer<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"product"} className="nav-link">
+                Product<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to={"servicesClient"} className="nav-link">
                 Services<i className="bi bi-star-fill"></i>
               </Link>
             </li>
-            <li onClick={() => logOut()} className="nav-item">
-              <Link className="nav-link">
-                LogOutClient<i className="bi bi-star-fill"></i>
+            <li className="nav-item">
+              <Link to={"favorite"} className="nav-link">
+                Favorites<i className="bi bi-star-fill"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"divisas"} className="nav-link">
+                Divisas<i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li onClick={() => logOut()} className="nav-item">
+              <Link className="nav-link">
+                LogOut<i className="bi bi-star-fill"></i>
+              </Link >
+            </li >
           </>
         )}
       </>
@@ -65,7 +106,7 @@ export const DashboardPage = () => {
   const logOut = () => {
     localStorage.clear();
     setLoggedIn(false);
-    navigate("/login");
+    navigate('/');
   };
 
   return (
@@ -131,7 +172,7 @@ export const DashboardPage = () => {
             </div>
           </div>
         </nav>
-        <div className="content">{activeView === "user" && <UsersPage />}</div>
+        {/* <div className="content">{activeView === "user" && <UsersPage />}</div> */}
         {/* <!-- Script para responsive - movil--> */}
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
