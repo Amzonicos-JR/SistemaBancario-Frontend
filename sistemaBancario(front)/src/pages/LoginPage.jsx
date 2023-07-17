@@ -46,7 +46,6 @@ export const LoginPage = () => {
   }
 
 
-
   return (
     <>
       <section className="vh-100">

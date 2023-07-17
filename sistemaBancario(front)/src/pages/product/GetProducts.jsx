@@ -8,7 +8,6 @@ export const GetProducts = () => {
   const getProducts = async () => {
     try {
       const { data } = await axios("http://localhost:3000/product/get");
-      console.log(data);
       if (data.products) {
         setProducts(data.products);
       }

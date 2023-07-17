@@ -98,9 +98,11 @@ export const TableProfile = () => {
                 Change Password
               </button>
               </Link>
+              <Link to='/dash/profile/history'>
               <button class="profile-card__button button--orange">
-              History
-            </button>
+                History
+              </button>
+              </Link>
             </div>
           </div>
         </div>

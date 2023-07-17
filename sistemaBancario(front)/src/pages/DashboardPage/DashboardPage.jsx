@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../DashboardPage/DashBoardStyle.css";
 import "../DashboardPage/NavBarStyle.less"
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,6 @@ export const DashboardPage = () => {
 
   const nav = () => {
     let x = localStorage.getItem('role')
-    console.log(x)
     return (
       <>
         {x === "ADMINAM" ? (
@@ -103,6 +102,7 @@ export const DashboardPage = () => {
     setLoggedIn(false);
     navigate('/');
   };
+
 
   return (
     <>
