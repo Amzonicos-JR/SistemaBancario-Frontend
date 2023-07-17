@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 export const UpdateFavorite = () => {
-    const [favorites, setFavorites] = useState([{}]);
+    const [favorites, setFavorites] = useState({});
     const navigate = useNavigate();
     const { _id } = useParams();
     const headers = {
@@ -15,8 +15,10 @@ export const UpdateFavorite = () => {
     const getFavorites = async (id) => {
         try {
             const { data } = await axios.get(`http://localhost:3000/favorite/get`, { headers: headers });
-            console.log(data);
-            setFavorites(data.favorites);
+            if (data.favorites) {
+                console.log(data.favorites, 's')
+                setFavorites(data.favorites)
+            }
         } catch (err) {
             console.log(err);
             throw new Error(err.response.message || data, "Error getting favorites");
@@ -50,7 +52,7 @@ export const UpdateFavorite = () => {
             <form className="m-5 text-center">
                 <div className="mb-3">
                     <label htmlFor="inputApodo" className="form-label">Apodo</label>
-                    <input type="text" className="form-control" id="inputApodo" defaultValue={''} placeholder="Introduzca el nuevo apodo" />
+                    <input type="text" className="form-control" id="inputApodo" defaultValue={favorites.apodo} placeholder="Introduzca el nuevo apodo" />
                 </div>
                 <br></br>
                 <button onClick={(e) => updateFavorite(e)} className="btn btn-success m-1">Update</button>

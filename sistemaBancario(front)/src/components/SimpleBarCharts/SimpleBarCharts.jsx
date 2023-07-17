@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react'
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import axios from 'axios'
 
 const SimpleBarCharts = () => {
@@ -10,9 +10,9 @@ const SimpleBarCharts = () => {
     try {
       const { data } = await axios.get('http://localhost:3000/user/getAccounts')
       if (data.users) {
-        setUsers(data.users)        
+        setUsers(data.users)
       }
-    } catch (err) {      
+    } catch (err) {
       console.log(err);
       throw new Error(err.response.message || data, "Error getting users");
     }
@@ -27,31 +27,32 @@ const SimpleBarCharts = () => {
     <>
       <br /> <br />
       <h1 className='text-center'> Stats for Users</h1>
-      <br />      
+      <br />
       {
-        users.map(({ _id, DPI, noCuenta, name, surname, email, balance }, index) => {})
+        users.map(({ _id, DPI, noCuenta, name, surname, email, balance }, index) => { })
       }
-
-      <ResponsiveContainer width='100%' aspect={2}>
-        <BarChart
-          data={users}
-          width={500}
-          height={300}
-          margin={
-            {
-              top: 5,
+      <div className='text-center'>
+        <ResponsiveContainer width="100%" aspect={2}>
+          <AreaChart
+            width={500}
+            height={400}
+            data={users}
+            margin={{
+              top: 10,
               right: 30,
-              left: 20,
-              bottom: 5
+              left: 0,
+              bottom: 0
             }}
-        >
-          <CartesianGrid strokeDasharray='4 1 2' />
-          <XAxis dataKey='name' />
-          <YAxis />
-          <Legend />
-          <Bar dataKey='movimientos' fill='#6b48ff' />
-        </BarChart>
-      </ResponsiveContainer>
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Area type="monotone" dataKey="movimientos" stackId="1" stroke='#8884d8' fill="#A3F3CF" />
+            <Area type="monotone" dataKey="balance" stackId="1" stroke='#8884d8' fill="#A3F3CF" />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </>
   )
 }

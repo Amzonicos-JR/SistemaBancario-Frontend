@@ -20,7 +20,7 @@ export const GetProducts = () => {
 
   const deleteProduct = async (id) => {
     try {
-      let confirmDelete = confirm(`Are you sure to delete this product ${id}?`);
+      let confirmDelete = confirm(`Are you sure to delete this product?`);
       if (confirmDelete) {
         const { data } = await axios.delete(
           `http://localhost:3000/product/delete/${id}`

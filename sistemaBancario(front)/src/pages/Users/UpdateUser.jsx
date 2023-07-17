@@ -14,10 +14,11 @@ export const UpdateUser = () => {
     const getUser = async () => {
         try {
             const { data } = await axios.get(`http://localhost:3000/user/getAccount/${_id}`, { headers: headers })
-            if (data.user) {
-                console.log(data.user, 'xxx')
+            if (data) {
+                console.log(data, 'xxx')
                 setUser(data.user)
             }
+
         } catch (err) {
             console.log(err);
             throw new Error(err.response.message || data, "Error getting users");
@@ -38,6 +39,7 @@ export const UpdateUser = () => {
 
             }
             const { data } = await axios.put(`http://localhost:3000/user/updateuser/${_id}`, userUp, {headers: headers})
+            console.log(user, 'userss')
             getUser();
             alert(`${data.message}`)
 

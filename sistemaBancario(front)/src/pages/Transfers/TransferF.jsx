@@ -39,7 +39,7 @@ export const TransferF = () => {
             <form className="m-5 text-center">
                 <div className="mb-3">
                     <label htmlFor="inputA" className="form-label">Amount to be deposited</label>
-                    <input type="number" className="form-control" id="inputA" required />
+                    <input type="number" className="form-control" id="inputA" placeholder="Introduzca el monto a depositar" required />
                 </div>
                 <br></br>
 
