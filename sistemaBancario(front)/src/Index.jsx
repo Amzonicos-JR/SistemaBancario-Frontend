@@ -49,6 +49,8 @@ import { GetFavorites } from "./pages/Favorites/GetFavorites";
 import { AddFavorite } from "./pages/Favorites/AddFavorite";
 import { UpdateFavorite } from './pages/Favorites/UpdateFavorite';
 import { HistoryByUser } from './pages/product/HistoryByUser';
+//-----------------Divisas----------------------
+import DivisasPage from './pages/DivisasPage';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -213,10 +215,14 @@ export const Index = () => {
                     element: <UpdateFavorite></UpdateFavorite>
                 },
                 {
-                    path:'transferF/:_id',
+                    path: 'transferF/:_id',
                     element: <TransferF></TransferF>
                 }
             ]
+        },
+        {
+            path: 'divisas',
+            element: <DivisasPage />
         }
 
     ]

@@ -23,37 +23,37 @@ export const DashboardPage = () => {
           <>
             <li className="nav-item">
               <Link to={"/dash/user"} className="nav-link">
-                Users <i className="bi bi-people-fill"></i>
+                Users <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"deposit"} className="nav-link">
-                Deposit<i className="bi bi-star-fill"></i>
+                Deposit <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"product"} className="nav-link">
-                Products<i className="bi bi-star-fill"></i>
+                Products  <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"service"} className="nav-link">
-                Services<i className="bi bi-star-fill"></i>
+                Services  <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"loan"} className="nav-link">
-                Loan<i className="bi bi-star-fill"></i>
+                Loan  <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"graphic"} className="nav-link">
-                Stats<i className="bi bi-star-fill"></i>
+                Stats <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
-                LogOut<i className="bi bi-star-fill"></i>
+                LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link>
             </li>
           </>
@@ -64,32 +64,37 @@ export const DashboardPage = () => {
           <>
             <li className="nav-item">
               <Link to={"profile"} className="nav-link">
-                Profile<i className="bi bi-star-fill"></i>
+                Profile <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"transfer"} className="nav-link">
-                Transfer<i className="bi bi-star-fill"></i>
+                Transfer  <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"product"} className="nav-link">
-                Product<i className="bi bi-star-fill"></i>
+                Product <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"servicesClient"} className="nav-link">
-                Services<i className="bi bi-star-fill"></i>
+                Services  <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"favorite"} className="nav-link">
-                Favorites<i className="bi bi-star-fill"></i>
+                Favorites <i className="bi bi-star-fill"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"divisas"} className="nav-link">
+                Divisas <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
-                LogOut<i className="bi bi-star-fill"></i>
+                LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link >
             </li >
           </>
@@ -124,9 +129,8 @@ export const DashboardPage = () => {
             {/* <!-- icono o nombre --> */}
             <a className="navbar-brand active">
               <i className="bi bi-person-circle"></i>
-              <Link to={""}>
-                <span className="text-info"> Dashboard</span>
-              </Link>
+              <span className="text-info"> Dashboard </span>
+              
             </a>
             {/* <!-- boton del menu para resolucion movil --> */}
             <button
@@ -142,7 +146,7 @@ export const DashboardPage = () => {
             </button>
             {/* <!-- elementos del menu responsive --> */}
             <div className="collapse navbar-collapse" id="menu">
-              <ul className="navbar-nav me-auto">
+              <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                 {nav()}
               </ul>
               <hr className="d-md-none text-white-50" />

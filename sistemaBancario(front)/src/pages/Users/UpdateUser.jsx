@@ -37,7 +37,6 @@ export const UpdateUser = () => {
                 ingresosMensuales: document.getElementById('inputIngMensuales').value
 
             }
-
             const { data } = await axios.put(`http://localhost:3000/user/updateuser/${_id}`, userUp, {headers: headers})
             getUser();
             alert(`${data.message}`)
