@@ -45,7 +45,7 @@ export const TableProfile = () => {
     }
   };
 
-  
+
 
   useEffect(() => {
     getUser();
@@ -53,7 +53,7 @@ export const TableProfile = () => {
 
   return (
     <>
-      
+
       <div class="wrapper">
         <div class="profile-card js-profile-card">
           <div class="profile-card__img">
@@ -94,13 +94,16 @@ export const TableProfile = () => {
 
             <div className="profile-card-ctr">
               <Link to='/dash/profile/edit'>
-              <button  class="profile-card__button button--blue">
-                Change Password
-              </button>
+                <button class="profile-card__button button--blue m-2">
+                  Change Password
+                </button>
               </Link>
-              <button class="profile-card__button button--orange">
-              History
-            </button>
+
+              <Link to='/dash/profile/history'>
+                <button class="profile-card__button button--orange m-2">
+                  History
+                </button>
+              </Link>
             </div>
           </div>
         </div>

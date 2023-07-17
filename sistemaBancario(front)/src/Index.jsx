@@ -48,6 +48,7 @@ import { GetFavorites } from "./pages/Favorites/GetFavorites";
 /* import { UpdateFavorite } from "./pages/Favorites/UpdateFavorite"; */
 import { AddFavorite } from "./pages/Favorites/AddFavorite";
 import { UpdateFavorite } from './pages/Favorites/UpdateFavorite';
+import { HistoryByUser } from './pages/product/HistoryByUser';
 
 export const AuthContext = createContext();
 export const Index = () => {
@@ -156,6 +157,10 @@ export const Index = () => {
                 {
                     path: 'edit',
                     element: <EditUser />
+                },
+                {
+                    path: 'history',
+                    element: <HistoryByUser></HistoryByUser>
                 }
             ]
         },
